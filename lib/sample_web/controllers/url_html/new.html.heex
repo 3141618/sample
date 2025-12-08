@@ -1,0 +1,24 @@
+<div class="max-w-xl mx-auto mt-10">
+  <.form :let={f} for={@changeset} action={~p"/shorten"}>
+    <.input
+      field={f[:original_url]}
+      type="text"
+      label="Enter URL"
+      placeholder="https://amazon.com/your-long-url"
+      class="w-full"
+    />
+
+    <div class="text-center mt-4">
+      <.button type="submit">
+        Shorten URL
+      </.button>
+    </div>
+  </.form>
+
+  <%= if @short_url do %>
+    <div class="mt-6 p-4 bg-green-100 rounded">
+      <p class="text-sm text-gray-600 mb-2">Your shortened URL:</p>
+      <a href={@short_url} target="_blank" class="text-blue-600 font-medium">{@short_url}</a>
+    </div>
+  <% end %>
+</div>
